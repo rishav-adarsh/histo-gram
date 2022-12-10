@@ -8,7 +8,7 @@ import {
   YAxis,
   Tooltip
 } from 'recharts';
-
+import { Button, ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   const [data, setData] = useState([]);
@@ -62,16 +62,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <button onClick={() => command()}>Submit</button>
-      <BarChart width={730} height={250} data={data}>
-      {/* <CartesianGrid strokeDasharray="3 3" /> */}
-      <XAxis dataKey="key" />
-      <YAxis />
-      <Tooltip />
-      <Bar dataKey="value" fill="#8884d8" />
-    </BarChart>
-    </div>
+    <ChakraProvider>
+      <div className="App">
+        <Button 
+          colorScheme='purple'
+          onClick={() => command()}>Submit</Button>
+        <BarChart width={730} height={250} data={data}>
+        <XAxis dataKey="key" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="value" fill="#8884d8" />
+      </BarChart>
+      </div>
+    </ChakraProvider>
   );
 }
 
